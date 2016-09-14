@@ -1,0 +1,28 @@
+---
+layout: page
+auto-scroll: false
+txt-color: dark
+page-id: home
+
+---
+
+<div class="section" data-anchor="hello">
+	{% include sliders/hero_fullpage.html %}
+</div> <!--cover-->
+
+
+<div class="section fp-auto-height" data-anchor="about">
+
+	{% include components/bio_content.html %}
+
+</div><!--bio-->
+
+{% include components/process_steps_bar_slide.html %}<!--process steps-->
+
+
+
+
+<div class="section fp-auto-height" id="work" data-anchor="projects">
+	{% include grids/grid_card_cover_posts_2.html %}
+</div><!-- post cards -->
+

@@ -1,0 +1,50 @@
+{% assign featured-cover-path = site.featured-path %}
+{% assign featured-cover-max-size =  791 %}
+{% assign breakpoints = "791|480" | split: "|" %}<!-- responsive imgs -->
+
+<h1 class="text-center">What I've done</h1>
+<h3 class="text-center">
+	<a href="http://work.diogorusso.com/experience-innovation" target="blank">Experience & Innovation </a>
+	<a href="http://work.diogorusso.com/creative-direction" target="blank">| Creative Direction </a>
+	<a href="http://work.diogorusso.com/web-graphics" target="blank">| Web & Graphics </a>
+</h3>
+<br>
+
+<div class="row" style="max-width:1270px;">
+	<div class="small-12 columns text-center">
+		<ul class="grid small-block-grid-1 medium-block-grid-2 large-block-grid-2">
+		{% for project in site.projects-featured |limit: 6 %}
+
+			<li itemscope itemtype="http://schema.org/CreativeWork" typeof="doap:Project">
+				<div class="card-cover">
+						<div class="grid-media media">
+							<a href="{{ project.url }}" target="blank" itemprop="url" property="doap:homepage">
+				        	<picture>
+								<img
+									sizes="(max-width: {{ featured-cover-max-size }}px)100vw, {{ featured-cover-max-size }}px"
+									
+									srcset=" 
+										{% for break in breakpoints %}
+										{{ featured-cover-path }}/{{ break }}/{{ project.cover }} {{ break }}w,
+										{% endfor %} 
+									"
+									
+									src="{{ featured-cover-path }}/{{ featured-cover-max-size }}/{{ project.cover }}"
+									alt="{{ project.title }}"
+								>
+							</picture>
+							</a>
+				      	</div>
+				      	<div class="content text-center">
+				      		<h4 itemprop="name">{{ project.title }}</h4>
+				        	<p itemprop="keywords">{{ project.fields }}</p>
+				        	<span class="hide" itemprop="author"> {{ site.author }} </span>
+				      	</div>
+				</div>
+			</li>
+		
+		{% endfor %}
+		</ul>
+	</div>
+</div>
+
